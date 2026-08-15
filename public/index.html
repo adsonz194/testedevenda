@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Loja simples com vendas e estoque atualizados em tempo real." />
+    <title>Venda Fácil</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Venda Fácil - início">
+        <span class="brand-mark">VF</span>
+        <span>Venda Fácil</span>
+      </a>
+
+      <div id="connection-status" class="connection-status is-connecting" role="status" aria-live="polite">
+        <span class="status-dot"></span>
+        <span class="status-text">Conectando…</span>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">PAINEL DE VENDAS</p>
+          <h1>Venda rápido.<br /><span>Acompanhe ao vivo.</span></h1>
+          <p class="hero-copy">
+            Escolha os produtos, monte o pedido e veja estoque e vendas sincronizados em todas as telas.
+          </p>
+          <a class="primary-link" href="#produtos">Começar uma venda <span>→</span></a>
+        </div>
+
+        <div class="metrics" aria-label="Resumo da loja">
+          <article>
+            <span>Produtos</span>
+            <strong id="metric-products">—</strong>
+          </article>
+          <article>
+            <span>Itens em estoque</span>
+            <strong id="metric-stock">—</strong>
+          </article>
+          <article>
+            <span>Vendas recentes</span>
+            <strong id="metric-orders">0</strong>
+          </article>
+        </div>
+      </section>
+
+      <div class="shop-layout">
+        <section id="produtos" class="catalog" aria-labelledby="catalog-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">CATÁLOGO</p>
+              <h2 id="catalog-title">Escolha os produtos</h2>
+            </div>
+            <span class="live-label"><span></span> estoque ao vivo</span>
+          </div>
+
+          <div id="product-grid" class="product-grid" aria-live="polite">
+            <div class="loading-card">Carregando produtos…</div>
+          </div>
+
+          <section class="recent-sales" aria-labelledby="recent-title">
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">TEMPO REAL</p>
+                <h2 id="recent-title">Últimas vendas</h2>
+              </div>
+            </div>
+            <div id="recent-orders" class="recent-orders">
+              <p class="empty-message">As novas vendas aparecerão aqui.</p>
+            </div>
+          </section>
+        </section>
+
+        <aside class="cart-panel" aria-labelledby="cart-title">
+          <div class="cart-heading">
+            <div>
+              <p class="eyebrow">PEDIDO ATUAL</p>
+              <h2 id="cart-title">Seu carrinho</h2>
+            </div>
+            <span id="cart-count" class="cart-count">0</span>
+          </div>
+
+          <div id="cart-items" class="cart-items">
+            <div class="empty-cart">
+              <span>🛒</span>
+              <p>Seu carrinho está vazio.</p>
+              <small>Adicione um produto para começar.</small>
+            </div>
+          </div>
+
+          <div class="cart-summary">
+            <span>Total</span>
+            <strong id="cart-total">R$ 0,00</strong>
+          </div>
+
+          <form id="order-form">
+            <label for="customer">Nome do cliente</label>
+            <input id="customer" name="customer" type="text" minlength="2" maxlength="80" placeholder="Ex.: Maria Silva" required />
+            <button id="checkout-button" class="checkout-button" type="submit" disabled>
+              Finalizar venda <span>→</span>
+            </button>
+          </form>
+        </aside>
+      </div>
+    </main>
+
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <footer>
+      <span>Venda Fácil</span>
+      <span>Atualização em tempo real via WebSocket</span>
+    </footer>
+  </body>
+</html>
